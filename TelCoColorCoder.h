@@ -2,8 +2,7 @@
 #define TELCOCOLORCODER_H_
 
 #include <iostream>
-#include <string>
-#include <assert.h>
+#include <cassert>
 
 namespace TelCoColorCoder {
 
@@ -14,29 +13,21 @@ namespace TelCoColorCoder {
     extern const char* MinorColorNames[];
 
     class ColorPair {
-    private:
-        MajorColor majorColor;
-        MinorColor minorColor;
     public:
         ColorPair(MajorColor major, MinorColor minor);
         MajorColor getMajor() const;
         MinorColor getMinor() const;
         std::string ToString() const;
+    private:
+        MajorColor majorColor;
+        MinorColor minorColor;
     };
 
     ColorPair GetColorFromPairNumber(int pairNumber);
     int GetPairNumberFromColor(MajorColor major, MinorColor minor);
     std::string ColorPairToString(int pairNumber);
-
-    void testNumberToPair(int pairNumber,
-        MajorColor expectedMajor,
-        MinorColor expectedMinor);
-
-    void testPairToNumber(
-        MajorColor major,
-        MinorColor minor,
-        int expectedPairNumber);
-
+    void testNumberToPair(int pairNumber, MajorColor expectedMajor, MinorColor expectedMinor);
+    void testPairToNumber(MajorColor major, MinorColor minor, int expectedPairNumber);
     void printColorCodingReference();
 
 }
